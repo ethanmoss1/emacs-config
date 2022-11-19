@@ -1,0 +1,62 @@
+;; Emacs Editor Settings
+;; Setting up default editor settings.
+
+;; [[file:../emacsconfig.org::*Emacs Editor Settings][Emacs Editor Settings:1]]
+(message "[ Moss ] Loading Core Editor Configurations  ... ")
+
+
+
+;; Newline at end of file
+(setq require-final-newline t)
+
+(setq-default indent-tabs-mode nil)  ; always replace tabs with spaces
+(setq-default tab-width 4)  ; Visual tab amount
+(setq tab-stop-list (number-sequence 4 120 4))  ; generates tabs distances at 4 spaces increments
+
+(setq save-place-file (moss-cache-dir "saveplace"))
+(save-place-mode 1)
+
+(let ((auto-save-dir (moss-cache-dir "autosave/")))
+  (unless (file-exists-p auto-save-dir)
+    (make-directory auto-save-dir))
+  (setq auto-save-interval 20
+        auto-save-file-name-transforms
+        `((".*" ,auto-save-dir t))))
+
+(setq backup-by-copying t
+      delete-old-versions t
+      kept-new-versions 10
+      kept-old-versions 0
+      vc-make-backup-files t
+      version-control t
+      backup-directory-alist `((".*" . ,(moss-cache-dir "backup"))))
+
+(setq make-backup-files nil)
+(setq large-file-warning-threshold nil)
+
+;; Font-Core
+(global-font-lock-mode t)
+;; autorevert
+(global-auto-revert-mode t)  ; updates buffer if file is updated
+;; Aliasing
+(fset 'yes-or-no-p 'y-or-n-p)  ; set all Yes/No to the easier Y/N
+;; Hooks
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'prog-mode-hook 'subword-mode)
+(add-hook 'after-save-hook
+            'executable-make-buffer-file-executable-if-script-p)
+(add-hook 'before-save-hook
+            (lambda ()
+              (when buffer-file-name
+                (let ((dir (file-name-directory buffer-file-name)))
+                  (when (and (not (file-exists-p dir))
+                             (y-or-n-p
+                              (format "Directory %s doesn't exist. Create it?" dir)))
+                    (make-directory dir t))))))
+
+(visual-line-mode t)
+(show-paren-mode t)
+(delete-selection-mode t)
+
+(provide 'moss-editor)
+;; Emacs Editor Settings:1 ends here

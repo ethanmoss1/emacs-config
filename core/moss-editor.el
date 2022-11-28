@@ -1,18 +1,18 @@
-;; Emacs Editor Settings
-;; Setting up default editor settings.
+;;; moss-editor --- Main configurations to the base Emacs
 
-;; [[file:../emacsconfig.org::*Emacs Editor Settings][Emacs Editor Settings:1]]
+;;; Commentary:
+;; The main conrigurations of the Base Emacs.
+
+;;; Code:
 (message "[ Moss ] Loading Core Editor Configurations  ... ")
-
-
 
 ;; Newline at end of file
 (setq require-final-newline t)
-
 (setq-default indent-tabs-mode nil)  ; always replace tabs with spaces
 (setq-default tab-width 4)  ; Visual tab amount
 (setq tab-stop-list (number-sequence 4 120 4))  ; generates tabs distances at 4 spaces increments
 
+;; Setup Cache for different modules
 (setq save-place-file (moss-cache-dir "saveplace"))
 (save-place-mode 1)
 
@@ -30,6 +30,11 @@
       vc-make-backup-files t
       version-control t
       backup-directory-alist `((".*" . ,(moss-cache-dir "backup"))))
+
+(setq eshell-directory-name (moss-cache-dir "eshell"))
+(setq transient-history-file (moss-cache-dir "transient/history.el"))
+(setq transient-levels-file (moss-cache-dir "transient/levels.el"))
+(setq transient-values-file (moss-cache-dir "transient/values.el"))
 
 (setq make-backup-files nil)
 (setq large-file-warning-threshold nil)
@@ -51,12 +56,56 @@
                 (let ((dir (file-name-directory buffer-file-name)))
                   (when (and (not (file-exists-p dir))
                              (y-or-n-p
-                              (format "Directory %s doesn't exist. Create it?" dir)))
+                              (format "Directory %s doesn't exist.  Create it?" dir)))
                     (make-directory dir t))))))
 
 (visual-line-mode t)
 (show-paren-mode t)
 (delete-selection-mode t)
 
+(setq-default fill-column 80)
+
+;; Moderate font lock
+(setq font-lock-maximum-decoration nil)
+(setq font-lock-maximum-size nil)
+
+;; Size of temporary buffers
+(temp-buffer-resize-mode)
+(setq temp-buffer-max-height 8)
+
+;; Minimum window height
+(setq window-min-height 1)
+
+;; Buffer encoding
+(prefer-coding-system       'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-language-environment   'utf-8)
+
+;; Unique buffer names
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'reverse
+      uniquify-separator " • "
+      uniquify-after-kill-buffer-p t
+      uniquify-ignore-buffers-re "^\\*")
+
+;; Default shell in term
+;; (unless
+;;     (or (eq system-type 'windows-nt)
+;;         (not (file-exists-p "/bin/zsh")))
+;;   (setq-default shell-file-name "/bin/zsh")
+;;   (setq explicit-shell-file-name "/bin/zsh"))
+
+;; Kill term buffer when exiting
+(defadvice term-sentinel (around my-advice-term-sentinel (proc msg))
+  "Advice to kill buffer when you exit terminal."
+  (if (memq (process-status proc) '(signal exit))
+      (let ((buffer (process-buffer proc)))
+        ad-do-it
+        (kill-buffer buffer))
+    ad-do-it))
+(ad-activate 'term-sentinel)
+
 (provide 'moss-editor)
-;; Emacs Editor Settings:1 ends here
+;;; moss-editor.el ends here

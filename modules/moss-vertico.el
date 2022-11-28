@@ -1,11 +1,12 @@
-;; Vertico
-;; Vertical Completion
-
-;; [[file:../emacsconfig.org::*Vertico][Vertico:1]]
+;;; moss-vertico.el --- Summary
+;;; Commentary
+;;; Code:
 (message "[ Moss ] Loading module, Vertico  ... ")
 
 (use-package vertico
-  :init (vertico-mode 1))
+  :init (vertico-mode 1)
+  :config
+  (setq vertico-count 7))
 
 (provide 'moss-vertico)
-;; Vertico:1 ends here
+;; moss-vertico.el ends here

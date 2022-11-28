@@ -1,0 +1,16 @@
+* update dired to not open new window on click
+(maybe not a good idea?)
+scratch this, being able to do both is better.
+
+* nano modeline and nano child frame for M-x
+not so sure on child frame now...
+
+* hydra being main throughout
+need a template to work from?
+
+* Clean up Bit warden, look at keepass?
+Keepass might be good but lack of android app, and a lot of set up. maybe in the future.
+
+* dotfiles/orgfiles when installing new programs or packages etc
+
+* 

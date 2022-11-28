@@ -1,12 +1,12 @@
-;;; TEMP --- Summary
+;;; moss-TEMP.el --- Summary
 
-;;; Commentary:
+;;; Commentary : ---------------------------------------------------------------
 
-;;; Code:
+;;; Code : ---------------------------------------------------------------------
 
 (message "[ Moss ] Loading module, TEMP  ... ")
 
-(use-package TEMP)
+
 
 (provide 'moss-TEMP)
-;;; moss-TEMP.el ends here
+;;; moss-TEMP.el ends here -----------------------------------------------------

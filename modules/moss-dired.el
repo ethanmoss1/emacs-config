@@ -10,8 +10,12 @@
   :straight (:type built-in)
   :defer t
   :config
-  (setq dired-listing-switches "-lah --group-directories-first"
-        dired-hide-details-mode t))
+  (setq dired-listing-switches "-lah --group-directories-first")
+  :hook
+  (dired-mode . moss-dired-mode-setup)
+  :preface
+  (defun moss-dired-mode-setup ()
+    (hl-line-mode +1)))
 
 (provide 'moss-dired)
 ;;; moss-dired.el ends here

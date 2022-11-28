@@ -4,13 +4,15 @@
 ;; [[file:../emacsconfig.org::*Straight Package management with use-package][Straight Package management with use-package:1]]
 (message "[ Moss ] Loading Package manager, Straight ... ")
 
-;; Make sure we use 'Use-Package'
+;; Set up some things before we install straight.
 (setq straight-use-package-by-default t)
+(setq straight-base-dir moss-cache-dir)
+
 
 ;; Script that sets up Straight if not on the system already
 (defvar bootstrap-version)
 (let ((bootstrap-file
-       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" moss-cache-dir))
       (bootstrap-version 6))
   (unless (file-exists-p bootstrap-file)
     (with-current-buffer

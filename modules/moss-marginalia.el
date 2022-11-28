@@ -1,10 +1,18 @@
-;; Marginalia
+;;; marginalia --- summary
+;;; Commentary:
+;;; Code:
 
-;; [[file:../emacsconfig.org::*Marginalia][Marginalia:1]]
 (message "[ Moss ] Loading module, Marginalia  ... ")
 
 (use-package marginalia
-  :init (marginalia-mode 1))
+  :init (marginalia-mode +1)
+  :general
+  (:keymaps 'minibuffer-local-map
+            "M-A" 'marginalia-cycle)
+  :config
+  (setq marginalia-align-offset 10
+        marginalia-field-width 160
+        marginalia-separator "  "))
 
 (provide 'moss-marginalia)
-;; Marginalia:1 ends here
+;;; moss-marginalia.el ends here

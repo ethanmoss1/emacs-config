@@ -1,9 +1,18 @@
-;;; moss-core --- Summary
+;;; moss-core.el --- Personalised Emacs Configuration built with design in mind.
 
-;;; Commentary:
+;;; Commentary : ---------------------------------------------------------------
+;; Core initalisation for Moss-Emacs.
+;; Massively influenced by Jimeh's .Emacs.d (Emacs Siren)  which was inspired by
+;; Emacs Prelude. UI and overall design by Nano emacs with some tweaks.
+;; Some other ideas from Jerrypnz and his Hydra focused emacs.
 
-;;; Code:
+;;; References : ---------------------------------------------------------------
+;; Emacs Siren :                               https://github.com/jimeh/.emacs.d
+;; Emacs Prelude :                            https://github.com/bbatsov/prelude
+;; Emacs Nano :                            https://github.com/rougier/nano-emacs
+;; Jerrypnz hydra :                         https://github.com/jerrypnz/.emacs.d
 
+;;; Code: ----------------------------------------------------------------------
 (message "[ Moss ] Loading Core ... ")
 
 (defun display-startup-echo-area-message ()
@@ -23,6 +32,15 @@
 (unless (file-exists-p moss-cache-dir)
   (make-directory moss-cache-dir t))
 
+(defun moss-recursive-add-to-load-path (dir)
+  "Add DIR and all its sub-directories to `load-path'."
+  (add-to-list 'load-path dir)
+  (dolist (f (directory-files dir))
+    (let ((name (expand-file-name f dir)))
+      (when (and (file-directory-p name)
+                 (not (string-prefix-p "." f)))
+        (moss-recursive-add-to-load-path name)))))
+
 (defun moss-dir (name)
   "Return absolute path to sub-directory NAME under moss-dir."
   (expand-file-name name moss-dir))
@@ -34,12 +52,13 @@
 ;; Setup load-path
 (add-to-list 'load-path moss-core-dir)
 
-;; Package Manager.
 (require 'moss-package-manager)
+(require 'moss-keybindings)
 (require 'moss-performance)
 (require 'moss-ui)
 (require 'moss-editor)
 
+;; Load all selected modules
 (require 'moss-modules)
 
 (setq custom-file (moss-cache-dir "custom.el"))

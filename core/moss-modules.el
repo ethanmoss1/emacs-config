@@ -37,6 +37,7 @@
 ;; Editing
 (require 'moss-rainbow)
 (require 'moss-buffer-move)
+(require 'moss-shell-pop)
 
 ;; Version Control
 (require 'moss-magit)
@@ -49,8 +50,10 @@
 (require 'moss-company)
 ;; (require 'moss-tree-sitter)
 
-;; Languages
+;; Filetype specific
+(require 'moss-pdf-tools)
 
+;; Languages
 
 ;; Email client
 (require 'moss-mu4e)

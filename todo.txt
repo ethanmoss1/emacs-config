@@ -7,10 +7,16 @@ not so sure on child frame now...
 
 * hydra being main throughout
 need a template to work from?
+hydra wont work everywhere but a "main hydra" accesable everywhere with frequently used commands?
+then depending the major mode have a majormode specific hydra? eg pdf tools
 
 * Clean up Bit warden, look at keepass?
 Keepass might be good but lack of android app, and a lot of set up. maybe in the future.
+Bitwarden is the one.
 
 * dotfiles/orgfiles when installing new programs or packages etc
 
-* 
+* Projectile.
+along with projectile - move keybindings to a central location. with correct mappings.
+
+* Embark? act on items in consult like kil buffer ect. worth looking into

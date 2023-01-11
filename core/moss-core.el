@@ -1,17 +1,17 @@
 ;;; moss-core.el --- Personalised Emacs Configuration built with design in mind.
-
+;;
 ;;; Commentary : ---------------------------------------------------------------
 ;; Core initalisation for Moss-Emacs.
 ;; Massively influenced by Jimeh's .Emacs.d (Emacs Siren)  which was inspired by
 ;; Emacs Prelude. UI and overall design by Nano emacs with some tweaks.
 ;; Some other ideas from Jerrypnz and his Hydra focused emacs.
-
+;;
 ;;; References : ---------------------------------------------------------------
-;; Emacs Siren :                               https://github.com/jimeh/.emacs.d
-;; Emacs Prelude :                            https://github.com/bbatsov/prelude
-;; Emacs Nano :                            https://github.com/rougier/nano-emacs
-;; Jerrypnz hydra :                         https://github.com/jerrypnz/.emacs.d
-
+;; Emacs Siren .............................. https://github.com/jimeh/.emacs.d
+;; Emacs Prelude ........................... https://github.com/bbatsov/prelude
+;; Emacs Nano ........................... https://github.com/rougier/nano-emacs
+;; Jerrypnz hydra ........................ https://github.com/jerrypnz/.emacs.d
+;;
 ;;; Code: ----------------------------------------------------------------------
 (message "[ Moss ] Loading Core ... ")
 

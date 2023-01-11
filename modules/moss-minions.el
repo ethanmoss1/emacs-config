@@ -4,7 +4,9 @@
 (message "[ Moss ] Loading module, Minions  ... ")
 
 (use-package minions
-  :config (minions-mode 1))
+  :config
+  (setq minions-mode-line-lighter "≡ ")
+  (minions-mode 1))
 
 (provide 'moss-minions)
 ;; Minions - hide minor modes:1 ends here

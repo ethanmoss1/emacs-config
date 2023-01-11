@@ -14,11 +14,11 @@
 ;; External Packages -----------------------------------------------------------
 
 ;; Main Theme
-;; (require 'moss-base16)
-(require 'moss-gruvbox)
+(require 'moss-base16)
+;; (require 'moss-gruvbox)
 
 ;; Additional Theming
-(require 'moss-nano)                    ; makes emacs more elegant
+;; (require 'moss-nano)                    ; makes emacs more elegant
 (require 'moss-alltheicons)             ; Icons for modules
 ;; (require 'moss-solaire)
 (require 'moss-personal-themeing)
@@ -48,18 +48,18 @@
 ;; LSP
 (require 'moss-eglot)
 (require 'moss-company)
-;; (require 'moss-tree-sitter)
+(require 'moss-tree-sitter)
 
 ;; Filetype specific
-(require 'moss-pdf-tools)
+;; (require 'moss-pdf-tools)
 
 ;; Languages
 
 ;; Email client
-(require 'moss-mu4e)
+;; (require 'moss-mu4e)
 ;; (require 'moss-mu4e-dashboard)
 
 ;; Modeline
-;; (require 'moss-minions)
+(require 'moss-minions)
 
 (provide 'moss-modules)

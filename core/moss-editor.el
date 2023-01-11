@@ -66,8 +66,8 @@
 (setq-default fill-column 80)
 
 ;; Moderate font lock
-(setq font-lock-maximum-decoration nil)
-(setq font-lock-maximum-size nil)
+(setq font-lock-maximum-decoration t) ; T for max, nil for minimum.
+(setq font-lock-maximum-size 256000)
 
 ;; Size of temporary buffers
 (temp-buffer-resize-mode)

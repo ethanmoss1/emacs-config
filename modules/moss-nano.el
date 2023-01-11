@@ -16,6 +16,18 @@
   (setq nano-font-family-monospaced "JetBrainsMono Nerd Font Mono"))
 
 ;; Set up.
+
+
+
+
+
+
+
+
+
+
+
+
 (require 'nano-base-colors)
 (require 'nano-faces)
 (require 'nano-theme)                   ;

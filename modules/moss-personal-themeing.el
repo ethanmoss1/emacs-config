@@ -9,7 +9,9 @@
 
 (use-package hl-line
   :custom-face
-  (hl-line ((t (:background "#32302F")))))
+  (hl-line ((t (:inherit fringe)))))
+
+
 
 (provide 'moss-personal-themeing)
 ;;; moss-personal-themeing.el ends here ----------------------------------------

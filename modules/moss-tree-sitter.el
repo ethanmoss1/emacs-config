@@ -19,13 +19,8 @@
   (use-package ts-fold-indicators
     :straight
     (ts-fold-indicators :type git :host github
-                        :repo "emacs-tree-sitter/ts-fold"))
-  :hook
-  (tree-sitter-after-on-hook . (lambda ()
-                               (set-fringe-mode
-                                (set (make-local-variable 'fringe-mode)
-                                     (if ts-fond-indicators-mode '(nil . 0) 0)))))
-  )
+                        :repo "emacs-tree-sitter/ts-fold")))
+
 
 
 (provide 'moss-tree-sitter)
